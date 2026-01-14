@@ -4,7 +4,6 @@ import shap
 import os
 import sys
 
-# Add src to path
 sys.path.append(os.path.abspath("src"))
 from data_loader import load_data
 from feature_engineering import preprocess_data
@@ -28,7 +27,6 @@ def test_logic():
         
     X_train, X_test, y_train, y_test, _, _ = preprocess_data(df)
     
-    # Pick one
     customer_data = X_test.iloc[[0]]
     print("Predicting...")
     prob = model.predict_proba(customer_data)[0][1]
@@ -44,3 +42,4 @@ def test_logic():
 
 if __name__ == "__main__":
     test_logic()
+
