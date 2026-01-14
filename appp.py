@@ -64,6 +64,18 @@ def get_data():
     # Load processed data for the model
     df_processed = load_data() 
     
+    if df_processed is None:
+        st.error("❌ Data Loading Failed!")
+        import os
+        st.write(f"Current Directory: `{os.getcwd()}`")
+        try:
+            if 'data' in os.listdir('.'):
+                st.write(f"Files in data: `{os.listdir('data')}`")
+            else:
+                st.error("The 'data' folder is MISSING from the uploaded files.")
+        except Exception as e:
+            st.write(f"Error checking data folder: {e}")
+    
     # Load RAW data for display (preserving CustomerID and other dropped columns)
     # We use the same file logic
     try:
